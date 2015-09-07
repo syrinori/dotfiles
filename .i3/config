@@ -1,0 +1,259 @@
+# -- basic config -- #
+exec --no-startup-id nitrogen --restore
+exec unclutter
+exec rofi
+exec ffx
+exec urxvt -name urxvt_scratchpad -e mux notes
+exec urxvt -name urxvt_music -e mux music
+# set mod key
+set $mod Mod1
+
+# set keyboard layout
+#exec_always setxkbmap gb
+
+# use rofi to show only applications with .desktop available
+#bindsym Ctrl+space exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -p "run:" -show run -font "Open Sans 10" -fg "#888888" -bg "#3A3A3A" -hlfg "#ebdbb2" -hlbg "#5f676a" -o 85'
+# bindsym $mod+p exec rofi -show run -terminal "urxvt" -disable-history -location 1 -width 100 -padding 0 -bg "#0B1016" -fg "#BCCADE" -hlbg "#BCCADE" -hlfg "#0B1016" -bc "#BCCADE"
+bindsym $mod+Shift+p exec clerk
+
+# -- style config -- #
+
+# i3 gaps config
+gaps inner 10
+gaps outer 50
+
+# borders
+for_window [class="^.*"] border pixel 2
+
+# configure colours
+#client.focused		#676d3d #676d3d 	#ebdbb2 	#676d3d
+#client.focused_inactive #323232 #333333 	#ebdbb2 	#323232
+#client.unfocused 	#323232 #323232 	#ebdbb2 	#323232
+#client.urgent 		#383a3b	#383a3b		#ee0000 	#383a3b
+
+# class					border  background	font    indicator
+client.focused			#F2777A #F2777A 	#ffffff #99CC99
+client.focused_inactive	#99CC99 #99CC99 	#ebdbb2 #F2777A
+client.unfocused		#99CC99 #99CC99 	#ebdbb2 #F2777A
+client.urgent			#CC0000 #CC0000 	#000000 #F2777A
+
+# bar config
+bar {
+	position top
+	font pango:inconsolata 12
+	status_command i3status
+	colors {
+		background	#2D2D2D
+		statusline	#F2777A
+		separator	#2D2D2D
+
+		focused_workspace	#F2777A #F2777A #2D2D2D
+		active_workspace	#99CC99 #99CC99 #2D2D2D
+		inactive_workspace	#99CC99 #99CC99 #2D2D2D
+		urgent_workspace	#99CC99 #F2777A #2D2D2D
+
+	}
+}
+
+# -- set custom keybindings -- #
+
+# volume softkeys
+bindcode 122 exec amixer -q set Master 5%-
+bindcode 123 exec amixer -q set Master 5%+
+bindcode 121 exec amixer -q set Master toggle
+
+# backlight softkeys
+bindcode 232 exec xbacklight - 10
+bindcode 233 exec xbacklight + 10
+
+# -- functions -- #
+
+# set locker
+set $locker i3lock-fancy && sleep 1
+bindsym Control+mod1+l exec $locker
+
+# lock screen after period of inactivity
+exec --no-startup-id xautolock -time 3 -notify 30 -notifier "notify-send -u critical -t 5000 -- 'Locking screen in 30 seconds..'" -locker 'i3lock-fancy' &
+
+# power menu
+bindsym $mod+Delete mode "$mode_system"
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+	bindsym l exec --no-startup-id $locker, mode "default"
+	bindsym e exec --no-startup-id i3-msg exit, mode "default"
+	bindsym s exec --no-startup-id $locker && systemctl suspend, mode "default"
+	bindsym h exec --no-startup-id $locker && systemctl hibernate, mode "default"
+	bindsym r exec --no-startup-id systemctl reboot, mode "default"
+	bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# -- standard i3 config -- #
+
+# window title font
+font pango:Terminus 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec urxvt
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# move stuff between scratchpad/workspaces
+bindsym $mod+m move scratchpad
+bindsym $mod+o scratchpad show
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+	# These bindings trigger as soon as you enter the resize mode
+
+	# Pressing left will shrink the window’s width.
+	# Pressing right will grow the window’s width.
+	# Pressing up will shrink the window’s height.
+	# Pressing down will grow the window’s height.
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
+
+	# same bindings, but for the arrow keys
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# -- workspace config -- #
+
+# toggle back to previous workspace
+#workspace_auto_back_and_forth yes
+
+# configure workspace titles
+set $tag1 "1: console"
+set $tag2 "2: internet"
+set $tag3 "3: music"
+set $tag4 "4: video"
+set $tag5 "5"
+set $tag6 "6"
+set $tag7 "7"
+set $tag8 "8"
+set $tag9 "9"
+set $tag10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $tag1
+bindsym $mod+2 workspace $tag2
+bindsym $mod+3 workspace $tag3
+bindsym $mod+4 workspace $tag4
+bindsym $mod+5 workspace $tag5
+bindsym $mod+6 workspace $tag6
+bindsym $mod+7 workspace $tag7
+bindsym $mod+8 workspace $tag8
+bindsym $mod+9 workspace $tag9
+bindsym $mod+0 workspace $tag10
+
+# assign workspaces to displays
+#workspace $tag1 output HDMI2
+#workspace $tag2 output HDMI2
+#workspace $tag3 output HDMI1
+#workspace $tag4 output LVDS1
+#workspace $tag5 output HDMI1
+#workspace $tag6 output HDMI1
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $tag1
+bindsym $mod+Shift+2 move container to workspace $tag2
+bindsym $mod+Shift+3 move container to workspace $tag3
+bindsym $mod+Shift+4 move container to workspace $tag4
+bindsym $mod+Shift+5 move container to workspace $tag5
+bindsym $mod+Shift+6 move container to workspace $tag6
+bindsym $mod+Shift+7 move container to workspace $tag7
+bindsym $mod+Shift+8 move container to workspace $tag8
+bindsym $mod+Shift+9 move container to workspace $tag9
+bindsym $mod+Shift+0 move container to workspace $tag10
+
+# -- per-application config -- #
+
+# bind programs to workspaces
+assign [class="^Firefox$"] $tag2
+assign [class="^mpv$"] $tag4
+assign [instance="urxvt_music"] $tag3
+
+# always floating
+for_window [class="^xfreerdp$"] floating enable
+for_window [class="^keepassx$"] floating enable
+for_window [class="^vinagre.*$"] floating enable
+for_window [class="^[Gg]imp-.*$"] floating enable
+
+# Scratchpad URXVT
+for_window [instance="urxvt_scratchpad"] move to scratchpad, border pixel 2

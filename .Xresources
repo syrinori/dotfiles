@@ -1,0 +1,68 @@
+URxvt*.font: xft:inconsolata:size=12
+URxvt*.scrollBar: false
+#define base00 #2d2d2d
+#define base01 #393939
+#define base02 #515151
+#define base03 #747369
+#define base04 #a09f93
+#define base05 #d3d0c8
+#define base06 #e8e6df
+#define base07 #f2f0ec
+#define base08 #f2777a
+#define base09 #f99157
+#define base0A #ffcc66
+#define base0B #99cc99
+#define base0C #66cccc
+#define base0D #6699cc
+#define base0E #cc99cc
+#define base0F #d27b53
+
+*.foreground:   base05
+*.background:   base00
+*.cursorColor:  base05
+
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
+
+*.color8:       base03
+*.color9:       base09
+*.color10:      base01
+*.color11:      base02
+*.color12:      base04
+*.color13:      base06
+*.color14:      base0F
+*.color15:      base07
+
+! Rofi
+rofi.disable-history:		     true
+rofi.terminal:			     urxvt
+rofi.key-run:			     Alt+p
+rofi.location:			     1
+rofi.width:			     100
+rofi.padding:			     0
+rofi.font:                           inconsolata 12
+rofi.fg:                             #D3D0C8
+rofi.bg:                             #2d2d2d
+rofi.color-enabled:                  false
+rofi.color-normal:                   #fdf6e3,#002b36,#eee8d5,#586e75,#eee8d5
+rofi.color-urgent:                   #fdf6e3,#dc322f,#eee8d5,#dc322f,#fdf6e3
+rofi.color-active:                   #fdf6e3,#268bd2,#eee8d5,#268bd2,#fdf6e3
+rofi.color-window:                   #fdf6e3,#002b36
+rofi.fg-active:                      #2d2d2d
+rofi.fg-urgent:                      #2d2d2d
+rofi.hlfg-active:                    #2d2d2d
+rofi.hlfg-urgent:                    #2d2d2d
+rofi.bg-active:                      #2d2d2d
+rofi.bg-urgent:                      #2d2d2d
+rofi.hlbg-active:                    #2d2d2d
+rofi.hlbg-urgent:                    #2d2d2d
+rofi.bgalt:                          #2d2d2d
+rofi.hlfg:                           #2d2d2d
+rofi.hlbg:                           #F2777A
+rofi.bc:                             #D3D0C8
