@@ -1,3 +1,3 @@
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
-/usr/bin/VBoxClient-all &
-exec i3
+xrandr --output VGA-0 --off --output LVDS --mode 1600x900 --pos 1440x0 --rotate normal --output HDMI-0 --mode 1440x900 --pos 0x0 --rotate normal
+exec i3 
