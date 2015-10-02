@@ -1,6 +1,7 @@
 # -- basic config -- #
 exec --no-startup-id nitrogen --restore
 exec unclutter
+exec xmodmap ~/.xmodmaprc
 exec rofi
 exec ffx
 exec urxvt -name urxvt_scratchpad -e mux notes
@@ -20,7 +21,7 @@ bindsym $mod+Shift+p exec clerk
 
 # i3 gaps config
 gaps inner 10
-gaps outer 50
+gaps outer 10
 
 # borders
 for_window [class="^.*"] border pixel 2
@@ -203,8 +204,8 @@ set $tag1 "1: console"
 set $tag2 "2: internet"
 set $tag3 "3: music"
 set $tag4 "4: video"
-set $tag5 "5"
-set $tag6 "6"
+set $tag5 "5: game"
+set $tag6 "6: chat"
 set $tag7 "7"
 set $tag8 "8"
 set $tag9 "9"
@@ -223,12 +224,16 @@ bindsym $mod+9 workspace $tag9
 bindsym $mod+0 workspace $tag10
 
 # assign workspaces to displays
-#workspace $tag1 output HDMI2
-#workspace $tag2 output HDMI2
-#workspace $tag3 output HDMI1
-#workspace $tag4 output LVDS1
-#workspace $tag5 output HDMI1
-#workspace $tag6 output HDMI1
+workspace $tag1 output HDMI-0
+workspace $tag2 output HDMI-0
+workspace $tag3 output HDMI-0
+workspace $tag4 output HDMI-0
+workspace $tag5 output HDMI-0
+workspace $tag6 output LVDS
+workspace $tag7 output LVDS
+workspace $tag8 output LVDS
+workspace $tag9 output LVDS
+workspace $tag10 output LVDS
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $tag1
@@ -247,6 +252,8 @@ bindsym $mod+Shift+0 move container to workspace $tag10
 # bind programs to workspaces
 assign [class="^Firefox$"] $tag2
 assign [class="^mpv$"] $tag4
+assign [class="Steam"] $tag6
+assign [class="Wine"] $tag5
 assign [instance="urxvt_music"] $tag3
 
 # always floating
