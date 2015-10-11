@@ -7,4 +7,5 @@
     ~/.Xresources: Xresources
     ~/.xinitrc: xinitrc
     ~/.i3: i3/
-
+    ~/.tmuxinator: tmuxinator/
+    ~/.xmodmaprc: xmodmaprc
