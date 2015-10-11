@@ -1,0 +1,10 @@
+# ~/.tmuxinator/music.yml
+
+name: music
+root: ~/
+
+windows:
+  - music:
+      layout: main-vertical
+      panes:
+        - pianobar 

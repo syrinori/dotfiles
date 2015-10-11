@@ -1,0 +1,10 @@
+# ~/.tmuxinator/notes.yml
+
+name: notes
+root: ~/
+
+windows:
+  - notes:
+      layout: main-vertical
+      panes:
+        - vim -c VimwikiIndex

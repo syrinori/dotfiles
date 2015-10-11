@@ -1,0 +1,12 @@
+# ~/.tmuxinator/editing.yml
+
+name: editing
+root: ~/
+
+windows:
+  - editor:
+      layout: b5a4,145x40,0,0[145x28,0,0,4,145x11,0,29{71x11,0,29,5,73x11,72,29,6}] 
+      panes:
+        - vim
+        - 
+        - 
