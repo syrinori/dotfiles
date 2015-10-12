@@ -4,6 +4,7 @@ exec unclutter
 exec xmodmap ~/.xmodmaprc
 exec rofi
 exec ffx
+exec steam
 exec urxvt -name urxvt_scratchpad -e mux notes
 exec urxvt -name urxvt_music -e mux music
 # set mod key
@@ -254,13 +255,24 @@ assign [class="^Firefox$"] $tag2
 assign [class="^mpv$"] $tag4
 assign [class="Steam"] $tag6
 assign [class="Wine"] $tag5
+assign [class="lol.launcher.admin.exe"] $tag5
+assign [class="Battle.net.exe"] $tag5
+assign [class="ppsspp"] $tag5
+assign [class="pcsx2"] $tag5
+assign [class="ninja-bin32"] $tag5
+assign [class="teleglitch32"] $tag5
+assign [class="Terraria.bin.x86"] $tag5
+assign [class="XCOM: Enemy Unknown"] $tag5
+assign [class="Risk of Rain"] $tag5
 assign [instance="urxvt_music"] $tag3
+assign [instance="urxvt_toxic"] $tag6
 
 # always floating
 for_window [class="^xfreerdp$"] floating enable
 for_window [class="^keepassx$"] floating enable
 for_window [class="^vinagre.*$"] floating enable
 for_window [class="^[Gg]imp-.*$"] floating enable
+for_window [class="Diablo III.exe"] floating enable
 
 # Scratchpad URXVT
 for_window [instance="urxvt_scratchpad"] move to scratchpad, border pixel 2
