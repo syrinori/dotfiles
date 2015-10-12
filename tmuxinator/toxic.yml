@@ -1,0 +1,10 @@
+# ~/.tmuxinator/music.yml
+
+name: toxic 
+root: ~/
+
+windows:
+  - music:
+      layout: main-vertical
+      panes:
+        - toxic 
