@@ -264,6 +264,9 @@ assign [class="teleglitch32"] $tag5
 assign [class="Terraria.bin.x86"] $tag5
 assign [class="XCOM: Enemy Unknown"] $tag5
 assign [class="Risk of Rain"] $tag5
+assign [class="HeroesOfTheStorm.exe"] $tag5
+assign [class="net-ftb-main-Main"] $tag5
+assign [class="Minecraft*"] $tag5
 assign [instance="urxvt_music"] $tag3
 assign [instance="urxvt_toxic"] $tag6
 
@@ -273,6 +276,7 @@ for_window [class="^keepassx$"] floating enable
 for_window [class="^vinagre.*$"] floating enable
 for_window [class="^[Gg]imp-.*$"] floating enable
 for_window [class="Diablo III.exe"] floating enable
+for_window [class="HeroesOfTheStorm.exe"] floating enable
 
 # Scratchpad URXVT
 for_window [instance="urxvt_scratchpad"] move to scratchpad, border pixel 2
