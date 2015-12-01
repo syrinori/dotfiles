@@ -252,10 +252,12 @@ bindsym $mod+Shift+0 move container to workspace $tag10
 
 # bind programs to workspaces
 assign [class="^Firefox$"] $tag2
+assign [class="qutebrowser"] $tag2
 assign [class="^mpv$"] $tag4
 assign [class="Steam"] $tag6
 assign [class="Wine"] $tag5
 assign [class="lol.launcher.admin.exe"] $tag5
+assign [class="LolClient.exe"] $tag5
 assign [class="Battle.net.exe"] $tag5
 assign [class="ppsspp"] $tag5
 assign [class="pcsx2"] $tag5
